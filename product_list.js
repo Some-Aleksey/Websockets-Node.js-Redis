@@ -33,7 +33,7 @@ wss.on('connection', (ws,req) => {
         (async () => {
             await listener.subscribe(channel_name, (message) => {
                 (async () => {
-                    ws.send(JSON.stringify(await client.HGETALL(message)));
+                    ws.send(await client.get(message));
                 })();
             });
         })();
